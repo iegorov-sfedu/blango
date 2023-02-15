@@ -16,9 +16,9 @@
 {% row %}
    <div class="col">
         {% include "blog/post-comments.html" %}
-        {% cache 3600 recent_posts post %}
+        {#{% cache 30 recent_posts post %}#}
         {% recent_posts post %}
-        {% endcache %}
+        {#{% endcache %}#}
     </div>
 {% endrow %}
 {% endblock %}
