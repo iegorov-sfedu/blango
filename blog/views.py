@@ -3,12 +3,18 @@ from django.utils import timezone
 from blog.models import Post
 from blog.forms import CommentForm
 import logging
+#from django.views.decorators.cache import cache_page
+#from django.views.decorators.vary import vary_on_cookie
 
 # Create your views here.
 logger = logging.getLogger(__name__)
 
+def get_ip(request):
+  from django.http import HttpResponse
+  return HttpResponse(request.META['REMOTE_ADDR'])
+
 def index(request):
-  posts = Post.objects.filter(published_at__lte=timezone.now())
+  posts = Post.objects.filter(published_at__lte=timezone.now()).select_related("author").defer("created_at", "modified_at")
   logger.debug("Got %d posts", len(posts))
   context = {
     "posts":posts

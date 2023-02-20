@@ -46,15 +46,26 @@ class Dev(Configuration):
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
+        'django.contrib.sites',
         'django.contrib.staticfiles',
+        'blango_auth',
         'blog',
         'crispy_forms',
         'crispy_bootstrap5',
         'rest_framework',
+<<<<<<< HEAD
         'rest_framework.authtoken',
+=======
+        'debug_toolbar',
+        'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
+        'allauth.socialaccount.providers.google',
+>>>>>>> 1cb26b04780d79ed63763bec6bd629c281d85d47
     ]
 
     MIDDLEWARE = [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
         'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
@@ -62,9 +73,18 @@ class Dev(Configuration):
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         #'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        
     ]
 
+    INTERNAL_IPS = ['192.168.11.179']
+
     ROOT_URLCONF = 'blango.urls'
+
+    SITE_ID = 1
+    ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+    ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_USERNAME_REQUIRED = False
+    ACCOUNT_AUTHENTICATION_METHOD = "email"
 
     TEMPLATES = [
         {
@@ -122,6 +142,12 @@ class Dev(Configuration):
             'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
         },
     ]
+
+    AUTH_USER_MODEL = "blango_auth.User"
+
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+    ACCOUNT_ACTIVATION_DAYS = 7
 
     #PASSWORD_HASHERS = [
     #  'django.contrib.auth.hashers.Argon2PasswordHasher',
@@ -185,7 +211,10 @@ class Dev(Configuration):
         "handlers": ["console"],
         "level": "DEBUG",
     }
-}
+ 
+    }
+
+
 
 class Prod(Dev):
   DEBUG = False
