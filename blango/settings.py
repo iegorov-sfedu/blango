@@ -53,15 +53,13 @@ class Dev(Configuration):
         'crispy_forms',
         'crispy_bootstrap5',
         'rest_framework',
-<<<<<<< HEAD
         'rest_framework.authtoken',
-=======
         'debug_toolbar',
         'allauth',
         'allauth.account',
         'allauth.socialaccount',
         'allauth.socialaccount.providers.google',
->>>>>>> 1cb26b04780d79ed63763bec6bd629c281d85d47
+
     ]
 
     MIDDLEWARE = [
