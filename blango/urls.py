@@ -39,6 +39,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     
     path('post/<slug>/', blog.views.post_detail, name='blog-post-detail'),
+    path("post-table/", blog.views.post_table, name="blog-post-table"),
     path('api/v1/', include('blog.api.urls')),
     path('ip/', blog.views.get_ip),
     path("__debug__/", include(debug_toolbar.urls)),
