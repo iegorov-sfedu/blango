@@ -53,6 +53,7 @@ class Dev(Configuration):
         'blog',
         'crispy_forms',
         'crispy_bootstrap5',
+        #'django_registration',
         'rest_framework',
         'rest_framework.authtoken',
         'debug_toolbar',
