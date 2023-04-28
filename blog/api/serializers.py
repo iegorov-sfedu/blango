@@ -22,7 +22,7 @@ class CommentSerializer(serializers.ModelSerializer):
   class Meta:
     model = Comment
     fields = ["id", "creator", "content", "modified_at", "created_at"]
-    readonly = ["modified_at", "created_at"]
+    read_only_fields = ["modified_at", "created_at"]
 
 class PostSerializer(serializers.ModelSerializer):
   tags = serializers.SlugRelatedField(
