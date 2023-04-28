@@ -45,7 +45,7 @@ class PostSerializer(serializers.ModelSerializer):
     model = Post
     #fields = "__all__"
     exclude = ["ppoi"]
-    readonly = ["modified_at", "created_at"]
+    read_only_fields = ["modified_at", "created_at"]
 
 class PostDetailSerializer(PostSerializer):
   comments = CommentSerializer(many=True)
